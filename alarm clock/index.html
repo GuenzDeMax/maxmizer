@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video autoplay muted loop plays-inline class="cid">
+        <source src="hd-background.mp4" type="video/mp4">
+    </video>
+    <video src="music.mp4" loop id="music"></video>
+    <div class="container" id="cont">
+        <div class="divi" id="div"></div>
+        <div class="alarm">Set Alarm</div>
+        <div class="di">
+            <input type="number" class="input" id="hour" placeholder="Hour">
+            <input type="number" class="input" id="minute" placeholder="Minute">
+        </div>
+        <button class="btn" onclick="set()">set alarm</button>
+        <button class="btn" onclick="stop()">stop alarm</button>
+    </div>
+    <script>
+
+        function myFun(){
+        var music = document.getElementById("music")
+        var hour = document.getElementById("hour").value
+        var minutes = document.getElementById("minute").value
+            var time = new Date()
+            var min = time.getMinutes()
+            var hr = time.getHours()
+            
+            if(minutes==min && hour==hr){
+                music.play()
+                document.getElementById("div").style.opacity = 1
+            }
+            else{
+                music.pause()
+                document.getElementById("div").style.opacity = 0
+            }
+        }
+        function set(){
+            var fun = setInterval(myFun)
+            var music = document.getElementById("music")
+            music.volume = "1"
+        }
+        function stop(){
+            var music = document.getElementById("music")
+            music.volume = "0"
+
+        }
+    </script>
+</body>
+</html>
